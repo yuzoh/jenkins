@@ -44,6 +44,9 @@ THE SOFTWARE.
 	    <div class="display-name" title="${%Expected build number}">
 	    #${queuedItems.size()==1 ? it.widget.owner.nextBuildNumber
 	       : it.widget.owner.nextBuildNumber+queuedItems.size()-i-1}
+            <j:if test="${!item.params.isEmpty()}">
+                <j:if test="${item.isDisplayNameWithParams()}"> ${item.displayNameWithParams}</j:if>
+	    </j:if>
 	    </div>
 	  </div>
 	  <div class="pane build-details indent-multiline">

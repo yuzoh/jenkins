@@ -779,7 +779,7 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
 
     @Exported
     public String getDisplayName() {
-        return displayName!=null ? displayName : "#"+number;
+        return displayName!=null ? displayName : "#"+number+" "+this.getDisplayNameWithParams();
     }
 
     public boolean hasCustomDisplayName() {

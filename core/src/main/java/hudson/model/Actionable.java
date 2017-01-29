@@ -137,7 +137,29 @@ public abstract class Actionable extends AbstractModelObject implements ModelObj
         }
         return Collections.unmodifiableList(_actions);
     }
+    
+    @Exported
+    public String getDisplayNameWithParams() {
+    	String ret = "";
+       	for (ParametersAction pa : getActions(ParametersAction.class)) {
+            for (ParameterValue p : pa.getParameters()) {
+                if( p instanceof StringParameterValue ){
+                    if( p.getName().equalsIgnoreCase("BuildDisplayName")){
+                        ret = (String)p.getValue();
+                        break;
+                    }
+                }
+            }
+       	}
+       	return ret;
+    }
 
+    @Exported
+    public Boolean isDisplayNameWithParams() {
+        return !getDisplayNameWithParams().equalsIgnoreCase("");
+    }
+    
+    
     /**
      * Adds a new action.
      * Note: calls to {@link #getAllActions()} that happen before calls to this method may not see the update.
